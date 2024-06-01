@@ -11,18 +11,18 @@
 </head>
 <body>
     <header>
-        <div class="header-container">
+        <div id="header-container">
 
-            <section class="speed-converter-image">
+            <section id="speed-converter-image">
                 <img src="Images/Speed.png" alt="Description of the image" width="500">
             </section>
             
         
-            <section class="speed-converter-titles">
+            <section id="speed-converter-titles">
                 <br>
-                <h1 class="speed-converter-title">Speed converter</h1>
+                <h1 id="speed-converter-title">Speed converter</h1>
                 <br>
-                <h3 class="speed-converter-title-description">Converts from km/t to min/km and vice versa</h4>
+                <h3 id="speed-converter-title-description">Converts from km/t to min/km and vice versa</h4>
                 <br>
             </section>
         </div>
@@ -33,15 +33,33 @@
 
 
     <main>
-        <section class="basic-box">
+
+        <section id="basic-box">
             <h5>To-be-developed</h5>
-            <input type="text" class="basic-input-speed">
+            <input type="text" id="basic-input-speed">
         </section>
 
+        <button id="basic-box-submit-number">
+            Submit
+        </button>
 
-        <section class="basic-range">
+        <!--
+            HTML Flexbox for the result
+        -->
+        <div class="results-box">
+
+            <p>Min:Sec</p>
+            <p>&rarr;</p>
+            <p id="basic-box-result-minutes"></p>
+            <p>:</p>
+            <p id="basic-box-result-seconds"></p>
+            
+
+        </div>
+
+        <section id="basic-range">
             <h5>To-be-developed</h5>
-            <input type="range" class="basic-range-speed">
+            <input type="range" id="basic-range-speed">
         </section>
     </main>
 
@@ -50,7 +68,7 @@
 
 
     <footer>
-        <h1>Your total speed:</h4> <div class="result-speed"></div>
+        <h1>Your total speed:</h4> <div id="result-speed"></div>
     </footer>
 
     <script src="script.js"></script>

@@ -16,3 +16,17 @@
     width: 400px;
     background-color: rgb(255, 145, 0);
 }
+
+
+.results-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    min-width: 50px;
+    max-width: 150px;
+}
+
+body{
+    position: relative;
+}
