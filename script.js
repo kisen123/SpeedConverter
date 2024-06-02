@@ -15,20 +15,34 @@ function calculateSpeed() {
 };
 */
 
+function showPaceAfterClick(minutes, seconds) {
+
+    // Rewriting to double digits
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
 
 
+    document.getElementById("basic-box-result-minutes").textContent = minutes;
+    document.getElementById("basic-box-result-seconds").textContent = seconds;
+}
+
+
+
+function updateTextInput(input) {
+    document.getElementById('textInput').value = val;
+}
+
+
+
+
+
+// Function to handle button click .
 function handleCalculateSpeedClick() {
     
     // Collects the input value from the basic-box
     var inputHTMLObject = document.getElementById("basic-input-speed");
-    
-
-    // Outputs result
 
 
-    // UNCOMMENT FOR TESTING AN OUTPUT
-    //document.getElementById("basic-box-result").textContent = inputHTMLObject.value;
-    
     // Calculating the pace from the speed
     pace = calculateSpeed(inputHTMLObject.value);
     
@@ -36,10 +50,8 @@ function handleCalculateSpeedClick() {
     console.log("The calculated pace is: " + pace.minutes + ":" + pace.seconds);
 
 
-    // Adding the calculated values 
-    document.getElementById("basic-box-result-minutes").textContent = pace.minutes;
-    document.getElementById("basic-box-result-seconds").textContent = pace.seconds;
-    
+    // Showing the pace after the user clicks the button
+    showPaceAfterClick(pace.minutes, pace.seconds);
 
 };
 

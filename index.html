@@ -34,8 +34,8 @@
 
     <main>
 
+        
         <section id="basic-box">
-            <h5>To-be-developed</h5>
             <input type="text" id="basic-input-speed">
         </section>
 
@@ -57,10 +57,27 @@
 
         </div>
 
+        <h2>TO BE DEVELOPED</h2>
+
         <section id="basic-range">
-            <h5>To-be-developed</h5>
-            <input type="range" id="basic-range-speed">
+            <label for="basic-range-speed"><strong>Choose speed</strong> (&pm;0.1 km/t)</label>
+            <input type="range" id="basic-range-speed" min="0" max="40" step="0.1">
         </section>
+
+
+
+
+        <div class="results-range">
+
+            <p>Min:Sec</p>
+            <p>&rarr;</p>
+            <p id="basic-range-result-minutes"></p>
+            <p>:</p>
+            <p id="basic-range-result-seconds"></p>
+            
+
+        </div>
+
     </main>
 
 
@@ -68,7 +85,7 @@
 
 
     <footer>
-        <h1>Your total speed:</h4> <div id="result-speed"></div>
+        <h1>Your total pace: </h4> <div id="result-speed"></div>
     </footer>
 
     <script src="script.js"></script>
