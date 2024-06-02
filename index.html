@@ -13,9 +13,12 @@
     <header>
         <div id="header-container">
 
+            <!--
             <section id="speed-converter-image">
                 <img src="Images/Speed.png" alt="Description of the image" width="500">
             </section>
+
+            -->
             
         
             <section id="speed-converter-titles">
@@ -47,38 +50,43 @@
         <!--
             HTML Flexbox for the result
         -->
-        <div class="results-box">
+        <span class="results-section">
+            <div id="results-box">
 
-            <p>Min:Sec</p>
-            <p>&rarr;</p>
-            <p id="basic-box-result-minutes"></p>
-            <p>:</p>
-            <p id="basic-box-result-seconds"></p>
-            
+                <p>Min:Sec</p>
+                <p>&rarr;</p>
+                <p id="basic-box-result-minutes"></p>
+                <p>:</p>
+                <p id="basic-box-result-seconds"></p>
+                
 
-        </div>
+            </div>
+        </span>
+
+
+
 
         <h2><em>Choose a speed</em></h2>
 
         <section id="basic-range">
             <label for="basic-range-speed"><strong>Choose speed</strong> (&pm;0.1 km/t)</label>
             <input type="range" id="basic-range-speed" min="0" max="40" step="0.1" width="300px" oninput="updateInputFromRange(this.value)">
-            <input type="text" id="basic-input-speed-range" value="12.5">
         </section>
+        <input type="text" id="basic-input-speed-range" value="12.5">
 
 
 
+        <span class="results-section">
+            <div id="results-range">
 
-        <div class="results-range">
-
-            <p>Min:Sec</p>
-            <p>&rarr;</p>
-            <p id="basic-range-result-minutes"></p>
-            <p>:</p>
-            <p id="basic-range-result-seconds"></p>
-            
-
-        </div>
+                <p>Min:Sec</p>
+                <p>&rarr;</p>
+                <p id="basic-range-result-minutes"></p>
+                <p>:</p>
+                <p id="basic-range-result-seconds"></p>
+                
+            </div>
+        </span>
 
     </main>
 
@@ -86,8 +94,9 @@
 
 
 
-    <footer>
-        
+    <footer style="display: flex; justify-content: space-between;">
+        <p id="made-by">Kristian Mølbach Lian</p>
+        <p id="link-to-github"><a href="https://github.com/kisen123">https://github.com/kisen123</a></p>
     </footer>
 
     <script src="script.js"></script>

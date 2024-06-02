@@ -1,52 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flexbox Push Down</title>
-<style>
-  body {
-    margin: 1;
-    padding: 0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Center Box</title>
+    <style>
+      body {
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  .container {
+    justify-content: center; /* Centers the box horizontally */
+    align-items: center;    /* Centers the box vertically */
+    height: 100vh;          /* Makes sure the body takes the full height of the viewport */
+    margin: 0;              /* Removes default margin */
+}
+
+.results-box {
     display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  .flexbox {
-    display: flex;
-    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+
+    min-width: 50px;
+    max-width: 150px;
+
+    /* Optionally, add some padding, border, or background to make the box more visible */
     padding: 10px;
-    background-color: lightgray;
-    margin: 5px;
-  }
-  .footer {
-    background-color: gray;
-    padding: 20px;
-    text-align: center;
-  }
-</style>
+    border: 1px solid #000;
+    background-color: #f0f0f0;
+}
+    </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="flexbox">
-    <p>Flexbox 1</p>
-  </div>
-  <div class="flexbox">
-    <p>Flexbox 2</p>
-  </div>
-  <div class="flexbox">
-    <p>Flexbox 3</p>
-  </div>
-  <div class="footer">
-    <p>Footer Content</p>
-  </div>
-</div>
-
+    <div class="results-box">
+      
+        <!-- Contents of the box -->
+    </div>
 </body>
 </html>

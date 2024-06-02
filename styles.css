@@ -8,17 +8,21 @@
 }
 
 
-.speed-converter-titles{
+#speed-converter-titles{
     display: flex;
     text-align: center;
     align-items: center;
     flex-direction: column;
-    width: 400px;
-    background-color: rgb(255, 145, 0);
+    margin-bottom: 100px;
 }
 
 
-.results-box {
+.results-section {
+    min-width: 30px;
+    max-width: 50px;
+}
+
+#results-box {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,7 +31,7 @@
     max-width: 150px;
 }
 
-.results-range {
+#results-range {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -35,11 +39,53 @@
     min-width: 50px;
     max-width: 150px;
 }
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+
 
 body{
-    position: relative;
+    margin: 0;
+    text-align: center;
+    align-items: center;
+    background: linear-gradient(0deg, #63ff7098, #ffe798, #ff9b17);
+
+    font-family: "Dosis", sans-serif;
+    height: inherit;
 }
 
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(0, 0, 0);
+}
+
+
+#made-by {
+    left: 0;
+    bottom: 0;
+    text-align: left;
+    margin: 3px;
+
+    font-family: "Cursive", Brush Script MT;
+}
+
+#link-to-github {
+    right: 0;
+    bottom: 0;
+    text-align: right;
+    margin: 3px;
+
+    font: "Consolas";
+}
 
 input[type="range"] {
     width: 400px;
