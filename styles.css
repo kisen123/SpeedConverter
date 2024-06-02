@@ -39,3 +39,8 @@
 body{
     position: relative;
 }
+
+
+input[type="range"] {
+    width: 400px;
+}

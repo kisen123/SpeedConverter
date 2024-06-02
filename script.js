@@ -27,9 +27,35 @@ function showPaceAfterClick(minutes, seconds) {
 }
 
 
+function showPaceAfterRangeChange(minutes, seconds) {
 
-function updateTextInput(input) {
-    document.getElementById('textInput').value = val;
+    // Rewriting to double digits
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+
+    document.getElementById("basic-range-result-minutes").textContent = minutes;
+    document.getElementById("basic-range-result-seconds").textContent = seconds;
+}
+
+
+
+function updateInputFromRange(input) {
+    document.getElementById('basic-input-speed-range').value = input;
+
+    // Collects the input value from the basic-box
+    var inputHTMLObject = document.getElementById("basic-input-speed-range");
+
+
+    // Calculating the pace from the speed
+    pace = calculateSpeed(inputHTMLObject.value);
+    
+    // Logging the output to the console for debugging purposes
+    // console.log("The calculated pace is: " + pace.minutes + ":" + pace.seconds);
+
+
+    // Showing the pace after the user clicks the button
+    showPaceAfterRangeChange(pace.minutes, pace.seconds);
 }
 
 
@@ -40,20 +66,24 @@ function updateTextInput(input) {
 function handleCalculateSpeedClick() {
     
     // Collects the input value from the basic-box
-    var inputHTMLObject = document.getElementById("basic-input-speed");
+    var inputHTMLObject = document.getElementById("basic-input-speed-box");
 
 
     // Calculating the pace from the speed
     pace = calculateSpeed(inputHTMLObject.value);
     
     // Logging the output to the console for debugging purposes
-    console.log("The calculated pace is: " + pace.minutes + ":" + pace.seconds);
+    // console.log("The calculated pace is: " + pace.minutes + ":" + pace.seconds);
 
 
     // Showing the pace after the user clicks the button
     showPaceAfterClick(pace.minutes, pace.seconds);
 
 };
+
+
+
+
 
 function calculateSpeed(inputValue) {
 
@@ -69,8 +99,8 @@ function calculateSpeed(inputValue) {
     let seconds = Math.floor((rawConvertedMinutes % 1) * 60, 2);
 
 
-    console.log("Minutes: " + minutes);
-    console.log("Seconds: " + seconds)
+    // console.log("Minutes: " + minutes);
+    // console.log("Seconds: " + seconds)
     return {minutes, seconds}
 };
 
