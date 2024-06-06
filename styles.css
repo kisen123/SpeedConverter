@@ -18,8 +18,8 @@
 
 
 .results-section {
-    min-width: 30px;
-    max-width: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 #results-box {
@@ -27,8 +27,6 @@
     flex-direction: row;
     justify-content: space-between;
 
-    min-width: 50px;
-    max-width: 150px;
 }
 
 #results-range {
