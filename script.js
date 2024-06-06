@@ -9,7 +9,7 @@ function updateInputFromRange(input) {
     // Calculating the pace from the speed
     pace = calculateSpeed(inputHTMLObject.value);
     
-    // Logging the output to the console for debugging purposes
+    // Uncomment to log the output to the console for debugging purposes
     // console.log("The calculated pace is: " + pace.minutes + ":" + pace.seconds);
 
 
@@ -30,6 +30,10 @@ function showPaceAfterRangeChange(minutes, seconds) {
 }
 
 
+/* function changeAttributeOnRangeChange() {
+TODO - Function to adjust an attribute placeholder (emoji/image/whatever) based on the speed in the box
+}
+*/
 
 function calculateSpeed(inputValue) {
 
@@ -56,7 +60,7 @@ function calculateSpeed(inputValue) {
         seconds = 0;
     }
     
-
+    // Uncomment for debugging
     // console.log("Minutes: " + minutes);
     // console.log("Seconds: " + seconds)
     return {minutes, seconds}
@@ -72,3 +76,4 @@ document.getElementById('basic-input-speed-range').addEventListener("keypress", 
         updateInputFromRange(this.value);
     }
 });
+
