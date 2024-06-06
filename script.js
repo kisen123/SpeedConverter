@@ -102,8 +102,14 @@ function calculateSpeed(inputValue) {
     let minutes = Math.floor(rawConvertedMinutes);
     let seconds = Math.round((rawConvertedMinutes % 1) * 60, 2);
 
-
-
+    // Handles situations where the rounding
+    // protocol gives f.ex 04:60 instead of 05:00
+    
+    if (seconds === 60) {
+        minutes = minutes + 1;
+        seconds = 0;
+    }
+    
 
     // console.log("Minutes: " + minutes);
     // console.log("Seconds: " + seconds)
@@ -112,3 +118,14 @@ function calculateSpeed(inputValue) {
 
 // Adds event listener to the 'calculate result' button
 document.getElementById('basic-box-submit-number').addEventListener('click', handleCalculateSpeedClick);
+
+// Adds event listener to the range input box.
+
+// When one presses Enter, the range and calculation 
+// should change
+
+document.getElementById('basic-input-speed-range').addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        updateInputFromRange(this.value);
+    }
+});
