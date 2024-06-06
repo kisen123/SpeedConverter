@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 500px;
-    justify-content: center;
+    /*justify-content: center;*/
     background-color: rgb(255, 210, 113);
 }
 
@@ -20,6 +20,9 @@
 .results-section {
     display: flex;
     justify-content: center;
+
+    gap: 15px;
+
 }
 
 #results-box {
@@ -50,7 +53,6 @@ html {
 body{
     margin: 0;
     text-align: center;
-    align-items: center;
     background: linear-gradient(0deg, #63ff7098, #ffe798, #ff9b17);
 
     font-family: "Dosis", sans-serif;

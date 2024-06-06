@@ -39,7 +39,7 @@
 
         
         <section id="basic-box">
-            <h2><em>Submit a speed (km/t)</em></h2>
+            <h2><em>Choose a speed (ex. 12.5)</em></h2>
             <input type="text" id="basic-input-speed-box">
         </section>
 
@@ -51,7 +51,6 @@
             HTML Flexbox for the result
         -->
         <span class="results-section">
-            <div id="results-box">
 
                 <p>Min:Sec</p>
                 <p>&rarr;</p>
@@ -59,17 +58,15 @@
                 <p>:</p>
                 <p id="basic-box-result-seconds"></p>
                 
-
-            </div>
         </span>
 
 
 
 
-        <h2><em>Choose a speed</em></h2>
+        <h2><em>Choose a speed (slider)</em></h2>
 
         <section id="basic-range">
-            <label for="basic-range-speed"><strong>Choose speed</strong> (&pm;0.1 km/t)</label>
+            <label for="basic-range-speed">&pm;0.1 km/t</label>
             <input type="range" id="basic-range-speed" min="0" max="40" step="0.1" width="300px" oninput="updateInputFromRange(this.value)">
         </section>
         <input type="text" id="basic-input-speed-range" value="12.5">
@@ -77,15 +74,15 @@
 
 
         <span class="results-section">
-            <div id="results-range">
+            
 
-                <p>Min:Sec</p>
-                <p>&rarr;</p>
-                <p id="basic-range-result-minutes"></p>
-                <p>:</p>
-                <p id="basic-range-result-seconds"></p>
+            <p>Min:Sec</p>
+            <p>&rarr;</p>
+            <p id="basic-range-result-minutes"></p>
+            <p>:</p>
+            <p id="basic-range-result-seconds"></p>
                 
-            </div>
+
         </span>
 
     </main>
