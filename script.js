@@ -93,10 +93,16 @@ function calculateSpeed(inputValue) {
     // Example: 10 km/t -> (10/60)**(-1)
 
     // Defining minutes and seconds
+    if (speed === 0) {
+        let rawConvertedMinutes = 0;
+    } else {
     let rawConvertedMinutes = (speed/60)**(-1);
+    }
 
     let minutes = Math.floor(rawConvertedMinutes);
     let seconds = Math.round((rawConvertedMinutes % 1) * 60, 2);
+
+
 
 
     // console.log("Minutes: " + minutes);
