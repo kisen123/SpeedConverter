@@ -117,7 +117,7 @@ function calculateSpeed(inputValue) {
 };
 
 // Adds event listener to the 'calculate result' button
-document.getElementById('basic-box-submit-number').addEventListener('click', handleCalculateSpeedClick);
+// document.getElementById('basic-box-submit-number').addEventListener('click', handleCalculateSpeedClick);
 
 // Adds event listener to the range input box.
 
