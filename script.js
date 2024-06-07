@@ -24,7 +24,7 @@ function updateAvgProjectedTime(selectedSpeed) {
     //let selectedSpeed = document.getElementById('basic-input-speed-range').value;
 
     // Looping over the distances, and calculating the average projected time from the speed and distance
-    let listOfKMDistances = ['5km', '10km', '21.1km', '42.2km'];
+    let listOfKMDistances = ['0.2km', '0.4km', '5km', '10km', '21.0975km', '42.195km'];
 
     for (const kmDistance of listOfKMDistances) {
 
