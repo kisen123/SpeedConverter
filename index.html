@@ -24,9 +24,6 @@
             <section id="speed-converter-titles">
                 <br>
                 <h1 id="speed-converter-title">Speed converter</h1>
-                <br>
-                <h3 id="speed-converter-title-description">Converts from km/t to min/km and vice versa</h4>
-                <br>
             </section>
         </div>
 
@@ -37,28 +34,68 @@
 
     <main>
 
-        <h2><em>Choose a speed (slider)</em></h2>
+        <section id="slider-section">
+            <h2><em>Choose a speed (slider)</em></h2>
 
-        <section id="basic-range">
-            <label for="basic-range-speed">&pm;0.1 km/t</label>
-            <input type="range" id="basic-range-speed" min="0" max="40" step="0.1" width="300px" oninput="updateInputFromRange(this.value)">
-        </section>
-        <input type="text" id="basic-input-speed-range" value="12.5">
+            <div id="basic-range">
+                <label for="basic-range-speed">&pm;0.1 km/t</label>
+                <input type="range" id="basic-range-speed" min="0" max="40" step="0.1" width="300px" oninput="updateInputFromRange(this.value)">
+            </div>
+            <input type="text" id="basic-input-speed-range" value="12.5">
 
 
 
-        <span class="results-section">
-            
-
-            <p>Min:Sec</p>
-            <p>&rarr;</p>
-            <p id="basic-range-result-minutes"></p>
-            <p>:</p>
-            <p id="basic-range-result-seconds"></p>
+            <span class="results-section">
                 
 
-        </span>
+                <p>Min:Sec</p>
+                <p>&rarr;</p>
+                <p id="basic-range-result-minutes"></p>
+                <p>:</p>
+                <p id="basic-range-result-seconds"></p>
+                    
 
+            </span>
+        </section>
+
+
+        <section id="avg-pace-projected-time-results-section">
+
+            <h2 id="projected-time-title">Projected times</h2>
+
+            <div id="avg-pace-5km-projected-time">
+                <p>5km</p>
+                <p>&rarr;</p>
+                <p id="avg-pace-5km-projected-time-result-minutes"></p>
+                <p>:</p>
+                <p id="avg-pace-5km-projected-time-result-seconds"></p>
+            </div>
+
+            <div id="avg-pace-10km-projected-time">
+                <p>10km</p>
+                <p>&rarr;</p>
+                <p id="avg-pace-10km-projected-time-result-minutes"></p>
+                <p>:</p>
+                <p id="avg-pace-10km-projected-time-result-seconds"></p>
+            </div>
+
+            <div id="avg-pace-21.1km-projected-time">
+                <p>21.1km</p>
+                <p>&rarr;</p>
+                <p id="avg-pace-21.1km-projected-time-result-minutes"></p>
+                <p>:</p>
+                <p id="avg-pace-21.1km-projected-time-result-seconds"></p>
+            </div>
+
+            <div id="avg-pace-42.2km-projected-time">
+                <p>42.2km</p>
+                <p>&rarr;</p>
+                <p id="avg-pace-42.2km-projected-time-result-minutes"></p>
+                <p>:</p>
+                <p id="avg-pace-42.2km-projected-time-result-seconds"></p>
+            </div>
+
+        </section>
     </main>
 
 

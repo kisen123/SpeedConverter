@@ -41,6 +41,41 @@
     max-width: 150px;
 }
 
+#projected-time-title:first-child {
+    margin-top: 90px;
+}
+
+#avg-pace-projected-time-results-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#avg-pace-5km-projected-time {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px
+}
+
+#avg-pace-10km-projected-time {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px
+}
+
+#avg-pace-21\.1km-projected-time {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px
+}
+
+#avg-pace-42\.2km-projected-time {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px
+}
+
 html {
     height: 100%;
     margin: 0;
