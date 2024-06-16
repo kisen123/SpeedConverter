@@ -27,6 +27,16 @@
             </section>
         </div>
 
+        <!--400m track UNCOMMENT TO TEST-->
+        <!--<div class="track-div">
+            <div class="track-container">
+                <div class="lane"></div>
+                <div class="lane"></div>
+                <div class="lane"></div>
+                <div class="lane"></div>
+            </div> 
+        </div>-->
+   
 
 
     </header>
@@ -39,7 +49,7 @@
 
             <div id="basic-range">
                 <label for="basic-range-speed">&pm;0.1 km/t</label>
-                <input type="range" id="basic-range-speed" min="0" max="30" step="0.1" width="300px" oninput="updateInputFromRange(this.value)">
+                <input type="range" id="basic-range-speed" min="0.1" max="30" step="0.1" width="300px" oninput="updateInputFromRange(this.value)">
             </div>
             <input type="text" id="basic-input-speed-range" value="12.5">
 
@@ -50,6 +60,8 @@
 
                 <p>Min:Sec</p>
                 <p>&rarr;</p>
+                <p id="basic-range-result-hours"></p>
+                <p>:</p>
                 <p id="basic-range-result-minutes"></p>
                 <p>:</p>
                 <p id="basic-range-result-seconds"></p>
@@ -66,6 +78,8 @@
             <div class="avg-pace-projected-time">
                 <p>200m</p>
                 <p>&rarr;</p>
+                <p id="avg-pace-0.2km-projected-time-result-hours"></p>
+                <p>:</p>
                 <p id="avg-pace-0.2km-projected-time-result-minutes"></p>
                 <p>:</p>
                 <p id="avg-pace-0.2km-projected-time-result-seconds"></p>
@@ -75,15 +89,38 @@
             <div class="avg-pace-projected-time">
                 <p>400m</p>
                 <p>&rarr;</p>
+                <p id="avg-pace-0.4km-projected-time-result-hours"></p>
+                <p>:</p>
                 <p id="avg-pace-0.4km-projected-time-result-minutes"></p>
                 <p>:</p>
                 <p id="avg-pace-0.4km-projected-time-result-seconds"></p>
             </div>
 
+            <div class="avg-pace-projected-time">
+                <p>1500m</p>
+                <p>&rarr;</p>
+                <p id="avg-pace-1.5km-projected-time-result-hours"></p>
+                <p>:</p>
+                <p id="avg-pace-1.5km-projected-time-result-minutes"></p>
+                <p>:</p>
+                <p id="avg-pace-1.5km-projected-time-result-seconds"></p>
+            </div>
+
+            <div class="avg-pace-projected-time">
+                <p>Mile (1609m)</p>
+                <p>&rarr;</p>
+                <p id="avg-pace-1.609km-projected-time-result-hours"></p>
+                <p>:</p>
+                <p id="avg-pace-1.609km-projected-time-result-minutes"></p>
+                <p>:</p>
+                <p id="avg-pace-1.609km-projected-time-result-seconds"></p>
+            </div>
 
             <div class="avg-pace-projected-time">
                 <p>5km</p>
                 <p>&rarr;</p>
+                <p id="avg-pace-5km-projected-time-result-hours"></p>
+                <p>:</p>
                 <p id="avg-pace-5km-projected-time-result-minutes"></p>
                 <p>:</p>
                 <p id="avg-pace-5km-projected-time-result-seconds"></p>
@@ -92,6 +129,8 @@
             <div class="avg-pace-projected-time">
                 <p>10km</p>
                 <p>&rarr;</p>
+                <p id="avg-pace-10km-projected-time-result-hours"></p>
+                <p>:</p>
                 <p id="avg-pace-10km-projected-time-result-minutes"></p>
                 <p>:</p>
                 <p id="avg-pace-10km-projected-time-result-seconds"></p>
@@ -100,6 +139,8 @@
             <div class="avg-pace-projected-time">
                 <p>21.1km (Half-marathon)</p>
                 <p>&rarr;</p>
+                <p id="avg-pace-21.0975km-projected-time-result-hours"></p>
+                <p>:</p>
                 <p id="avg-pace-21.0975km-projected-time-result-minutes"></p>
                 <p>:</p>
                 <p id="avg-pace-21.0975km-projected-time-result-seconds"></p>
@@ -108,6 +149,8 @@
             <div class="avg-pace-projected-time">
                 <p>42.2km (Marathon)</p>
                 <p>&rarr;</p>
+                <p id="avg-pace-42.195km-projected-time-result-hours"></p>
+                <p>:</p>
                 <p id="avg-pace-42.195km-projected-time-result-minutes"></p>
                 <p>:</p>
                 <p id="avg-pace-42.195km-projected-time-result-seconds"></p>

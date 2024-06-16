@@ -108,3 +108,73 @@ footer {
 input[type="range"] {
     width: 400px;
 }
+
+/*Here comes the track and field logo*/
+/*
+.track-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.track-container {
+    width: calc(300px * var(--scale));
+    height: calc(150px * var(--scale));
+    position: relative;
+    background-color: #c63c26;
+    border-radius: calc(75px * var(--scale));
+}
+
+.lane {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(90% * var(--scale));
+    height: calc(80% * var(--scale));
+    border: calc(2px * var(--scale)) solid white;
+    border-radius: calc(75px * var(--scale));
+    transform: translate(-50%, -50%);
+}
+
+.lane:nth-child(2) {
+    width: calc(80% * var(--scale));
+    height: calc(60% * var(--scale));
+}
+
+.lane:nth-child(3) {
+    width: calc(70% * var(--scale));
+    height: calc(40% * var(--scale));
+}
+
+.lane:nth-child(4) {
+    width: calc(60% * var(--scale));
+    height: calc(20% * var(--scale));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: calc(50% * var(--scale));
+    height: calc(50% * var(--scale));
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 80%;
+    max-height: 80%;
+}
+
+
+:root {
+    --scale: 1;
+}
+
+*/

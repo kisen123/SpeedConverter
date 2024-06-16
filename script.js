@@ -14,7 +14,7 @@ function updateInputFromRange(input) {
 
 
     // Showing the pace after the user clicks the button
-    showPaceAfterRangeChange(pace.minutes, pace.seconds);
+    showPaceAfterRangeChange(pace.hours, pace.minutes, pace.seconds);
 
     // Updating the projected times section
     updateAvgProjectedTime(speed)
@@ -24,13 +24,13 @@ function updateAvgProjectedTime(selectedSpeed) {
     //let selectedSpeed = document.getElementById('basic-input-speed-range').value;
 
     // Looping over the distances, and calculating the average projected time from the speed and distance
-    let listOfKMDistances = ['0.2km', '0.4km', '5km', '10km', '21.0975km', '42.195km'];
+    let listOfKMDistances = ['0.2km', '0.4km', '1.5km', '1.609km', '5km', '10km', '21.0975km', '42.195km'];
 
     for (let kmDistance of listOfKMDistances) {
 
         avgProjectedTime = calculateAvgProjectedTime(selectedSpeed, kmDistance);
 
-        showAvgProjectedTimeAfterRangeChange(hours=0, aminutes=avgProjectedTime.minutes, seconds=avgProjectedTime.seconds, kmDistance=kmDistance);
+        showAvgProjectedTimeAfterRangeChange(hours=avgProjectedTime.hours, minutes=avgProjectedTime.minutes, seconds=avgProjectedTime.seconds, kmDistance=kmDistance);
 
     }
 
@@ -44,23 +44,37 @@ function showAvgProjectedTimeAfterRangeChange(hours, minutes, seconds, kmDistanc
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-    //let HTMLElementHours = `avg-pace-${kmDistance}-projected-time-result-hours`;
+    let HTMLElementHours = `avg-pace-${kmDistance}-projected-time-result-hours`;
     let HTMLElementMinutes = `avg-pace-${kmDistance}-projected-time-result-minutes`;
     let HTMLElementSeconds = `avg-pace-${kmDistance}-projected-time-result-seconds`;
 
+    /*
+    if (hours >= 1) {
+        let listOfp = document.getElementById(HTMLElementHours)
+        .parentElement
+        .getElementsByTagName('p');
 
+        let newHTML = `avg-pace-${kmDistance}-projected-time-result-hours></p><p>:</p>`;
+
+        listOfp[1].insertAdjacentHTML('afterend', newHTML)
+
+    }
+    */
+
+    document.getElementById(HTMLElementHours).textContent = hours;
     document.getElementById(HTMLElementMinutes).textContent = minutes;
     document.getElementById(HTMLElementSeconds).textContent = seconds;
 
 }
 
-function showPaceAfterRangeChange(minutes, seconds) {
+function showPaceAfterRangeChange(hours, minutes, seconds) {
 
     // Rewriting to double digits
+    hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
-
+    document.getElementById("basic-range-result-hours").textContent = hours;
     document.getElementById("basic-range-result-minutes").textContent = minutes;
     document.getElementById("basic-range-result-seconds").textContent = seconds;
 }
@@ -86,12 +100,19 @@ function calculateSpeed(inputValue) {
     }
 
     let hours = Math.floor(rawConvertedMinutes / 60);
-    let minutes = Math.floor(rawConvertedMinutes);
-    let seconds = Math.round((rawConvertedMinutes % 1) * 60, 2);
+    let minutes;
+
+    if (hours <= 0) {
+        minutes = Math.floor(rawConvertedMinutes);
+    } else {
+        minutes = Math.floor(((rawConvertedMinutes / 60) % 1) * 60, 2)
+    };
+    let seconds = Math.round(((((rawConvertedMinutes / 60) % 1) * 60) % 1) * 60, 2);
 
     // Handles situations where the rounding
-    // protocol gives f.ex. 60:00 instead of 01:00:00
-    if (minutes == 60) {
+    // protocol gives f.ex. 00:60:00 instead of 01:00:00
+    if (minutes === 60) {
+        hours = hours + 1;
         minutes = 0;
         console.log("Possible bug");
     }
@@ -103,9 +124,7 @@ function calculateSpeed(inputValue) {
         seconds = 0;
     }
     
-    // Uncomment for debugging
-    // console.log("Minutes: " + minutes);
-    // console.log("Seconds: " + seconds)
+    
     return {hours, minutes, seconds}
 };
 
@@ -117,6 +136,7 @@ function calculateAvgProjectedTime(speed, kmDistance) {
     // Rewriting the km values to integers
     kmDistance = parseFloat(kmDistance.replace('km', ''));
 
+
     // Defining minutes and seconds
     if (speed === 0) {
         rawConvertedMinutesAvgProjected = 0;
@@ -124,15 +144,24 @@ function calculateAvgProjectedTime(speed, kmDistance) {
     rawConvertedMinutesAvgProjected = (kmDistance / speed) * 60;
     }
 
+
+    // rawConvertedMinutesAvgProjected is used for every calculation
+    // of hours-minutes-seconds.
     let hours = Math.floor(rawConvertedMinutesAvgProjected / 60);
-    let minutes = Math.floor(rawConvertedMinutesAvgProjected);
-    let seconds = Math.round((rawConvertedMinutesAvgProjected % 1) * 60, 2);
+    let minutes;
+    if (hours <= 0) {
+        minutes = Math.floor(rawConvertedMinutesAvgProjected);
+    } else {
+        minutes = Math.floor(((rawConvertedMinutesAvgProjected / 60) % 1) * 60, 2)
+    };
+    let seconds = Math.round(((((rawConvertedMinutesAvgProjected / 60) % 1) * 60) % 1) * 60, 2);
+
 
     // Handles situations where the rounding
-    // protocol gives f.ex. 60:00 instead of 01:00:00
-    if (minutes == 60) {
+    // protocol gives f.ex. 00:60:00 instead of 01:00:00
+    if (minutes === 60) {
+        hours = hours + 1;
         minutes = 0;
-        console.log("Possible bug");
     }
 
 
@@ -143,9 +172,7 @@ function calculateAvgProjectedTime(speed, kmDistance) {
         seconds = 0;
     }
     
-    // Uncomment for debugging
-    // console.log("Minutes: " + minutes);
-    // console.log("Seconds: " + seconds)
+
     return {hours, minutes, seconds}
 }
 
