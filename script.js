@@ -26,23 +26,25 @@ function updateAvgProjectedTime(selectedSpeed) {
     // Looping over the distances, and calculating the average projected time from the speed and distance
     let listOfKMDistances = ['0.2km', '0.4km', '5km', '10km', '21.0975km', '42.195km'];
 
-    for (const kmDistance of listOfKMDistances) {
+    for (let kmDistance of listOfKMDistances) {
 
         avgProjectedTime = calculateAvgProjectedTime(selectedSpeed, kmDistance);
 
-        showAvgProjectedTimeAfterRangeChange(avgProjectedTime.minutes, avgProjectedTime.seconds, kmDistance)
+        showAvgProjectedTimeAfterRangeChange(hours=0, aminutes=avgProjectedTime.minutes, seconds=avgProjectedTime.seconds, kmDistance=kmDistance);
 
     }
 
 }
 
 
-function showAvgProjectedTimeAfterRangeChange(minutes, seconds, kmDistance) {
+function showAvgProjectedTimeAfterRangeChange(hours, minutes, seconds, kmDistance) {
 
     // Rewriting to double digits
+    hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
 
+    //let HTMLElementHours = `avg-pace-${kmDistance}-projected-time-result-hours`;
     let HTMLElementMinutes = `avg-pace-${kmDistance}-projected-time-result-minutes`;
     let HTMLElementSeconds = `avg-pace-${kmDistance}-projected-time-result-seconds`;
 
@@ -83,8 +85,16 @@ function calculateSpeed(inputValue) {
     rawConvertedMinutes = (speed/60)**(-1);
     }
 
+    let hours = Math.floor(rawConvertedMinutes / 60);
     let minutes = Math.floor(rawConvertedMinutes);
     let seconds = Math.round((rawConvertedMinutes % 1) * 60, 2);
+
+    // Handles situations where the rounding
+    // protocol gives f.ex. 60:00 instead of 01:00:00
+    if (minutes == 60) {
+        minutes = 0;
+        console.log("Possible bug");
+    }
 
     // Handles situations where the rounding
     // protocol gives f.ex 04:60 instead of 05:00
@@ -96,7 +106,7 @@ function calculateSpeed(inputValue) {
     // Uncomment for debugging
     // console.log("Minutes: " + minutes);
     // console.log("Seconds: " + seconds)
-    return {minutes, seconds}
+    return {hours, minutes, seconds}
 };
 
 // Function to calculate average projected time for 
@@ -114,9 +124,17 @@ function calculateAvgProjectedTime(speed, kmDistance) {
     rawConvertedMinutesAvgProjected = (kmDistance / speed) * 60;
     }
 
-
+    let hours = Math.floor(rawConvertedMinutesAvgProjected / 60);
     let minutes = Math.floor(rawConvertedMinutesAvgProjected);
     let seconds = Math.round((rawConvertedMinutesAvgProjected % 1) * 60, 2);
+
+    // Handles situations where the rounding
+    // protocol gives f.ex. 60:00 instead of 01:00:00
+    if (minutes == 60) {
+        minutes = 0;
+        console.log("Possible bug");
+    }
+
 
     // Handles situations where the rounding
     // protocol gives f.ex 04:60 instead of 05:00
@@ -128,7 +146,7 @@ function calculateAvgProjectedTime(speed, kmDistance) {
     // Uncomment for debugging
     // console.log("Minutes: " + minutes);
     // console.log("Seconds: " + seconds)
-    return {minutes, seconds}
+    return {hours, minutes, seconds}
 }
 
 // Adds event listener to the range input box.
