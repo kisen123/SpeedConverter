@@ -4,34 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Center Box</title>
+    <!--
+    <link rel="stylesheet" href="styles.css">
+    -->
+
     <style>
-      body {
-    display: flex;
-    justify-content: center; /* Centers the box horizontally */
-    align-items: center;    /* Centers the box vertically */
-    height: 100vh;          /* Makes sure the body takes the full height of the viewport */
-    margin: 0;              /* Removes default margin */
-}
+        #draggable {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.results-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    min-width: 50px;
-    max-width: 150px;
-
-    /* Optionally, add some padding, border, or background to make the box more visible */
-    padding: 10px;
-    border: 1px solid #000;
-    background-color: #f0f0f0;
-}
+        #value {
+            margin-top: 20px;
+            font-size: 24px;
+        }
     </style>
+
 </head>
 <body>
-    <div class="results-box">
-      
-        <!-- Contents of the box -->
-    </div>
+    <div id="draggable">Drag me</div>
+    <div id="value">Value: 0.0</div>
+
+
+
+
+    <script src="script.js"></script>
 </body>
 </html>
