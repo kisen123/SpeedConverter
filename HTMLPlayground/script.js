@@ -34,3 +34,5 @@ function onMouseUp() {
 function updateValueDisplay() {
     swipeData.valueDisplay.textContent = `Value: ${swipeData.value.toFixed(1)}`;
 }
+
+// hei opå deg
