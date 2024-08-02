@@ -178,3 +178,28 @@ input[type="range"] {
 }
 
 */
+
+/*Here is CSS for the Swiper*/
+#swiper {
+    width: 100vw;
+    height: 100px;
+    background: linear-gradient(90deg, rgb(232, 250, 203) , #f8aa02e5);;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#value {
+    font-size: 24px;
+}
+
+#swiper-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    
+}

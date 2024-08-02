@@ -1,3 +1,4 @@
+
 // Updates the the input when the range slider is adjusted
 function updateInputFromRange(input) {
     document.getElementById('basic-input-speed-range').value = input;
@@ -187,3 +188,47 @@ document.getElementById('basic-input-speed-range').addEventListener("keypress", 
     }
 });
 
+
+
+
+/*Here is JavaScript code for the Swiper*/
+let swipeData = {
+    value: parseFloat(document.getElementById("basic-input-speed-range").value),
+    startX: 0,
+    incrementStep: 120, // distance in pixels to increment value
+    incrementValue: 0.1,
+    valueDisplay: document.getElementById('value'),
+    draggable: document.getElementById('swiper')
+}
+
+
+
+swipeData.draggable.addEventListener('mousedown', (event) => {
+    swipeData.startX = event.clientX;
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+});
+
+function onMouseMove(event) {
+
+    swipeData.value = parseFloat(document.getElementById("basic-input-speed-range").value);
+
+    const currentX = event.clientX;
+    const distance = currentX - swipeData.startX;
+
+    if (Math.abs(distance) >= swipeData.incrementStep) {
+        swipeData.value += swipeData.incrementValue * Math.sign(distance);
+        swipeData.startX = currentX; // reset startX to current position to track next increment
+        updateSpeedDisplay();
+    }
+}
+
+function onMouseUp() {
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+}
+
+function updateSpeedDisplay() {
+    document.getElementById("basic-input-speed-range").value = swipeData.value.toFixed(1);
+    updateInputFromRange(swipeData.value.toFixed(1));
+}
