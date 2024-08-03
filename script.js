@@ -1,10 +1,17 @@
 
-// Updates the the input when the range slider is adjusted
+// Updates the input when the range slider is adjusted
 function updateInputFromRange(input) {
     document.getElementById('basic-input-speed-range').value = input;
 
     // Collects the input value from the basic-box
     let speed = document.getElementById("basic-input-speed-range").value;
+
+    // Dynamically adjusts the width of the input box for km/t
+    // TODO HERE
+    // let kmtElement = document.getElementById("basic-input-speed-range");
+    // let textWidth = kmtElement.size;
+    // kmtElement.style.width = `${textWidth}px`;
+
 
 
     // Calculating the pace from the speed
