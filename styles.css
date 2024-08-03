@@ -189,6 +189,7 @@ input[type="range"] {
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: none;
 }
 
 #value {
