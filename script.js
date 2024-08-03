@@ -202,12 +202,30 @@ let swipeData = {
 }
 
 
-
+// Event listener for mouse
 swipeData.draggable.addEventListener('mousedown', (event) => {
     swipeData.startX = event.clientX;
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 });
+
+
+
+
+// Event listener for touch
+swipeData.draggable.addEventListener('touchstart', (event) => {
+    swipeData.startX = event.touches[0].clientX;
+    document.addEventListener('touchmove', onTouchMove);
+    document.addEventListener('touchup', onTouchUp);
+});
+
+
+// Prevent default behavior to avoid scrolling
+document.draggable.addEventListener('touchmove', function(event) {
+    event.preventDefault();
+}, { passive: false });
+
+
 
 function onMouseMove(event) {
 
@@ -227,6 +245,25 @@ function onMouseUp() {
     document.removeEventListener('mousemove', onMouseMove);
     document.removeEventListener('mouseup', onMouseUp);
 }
+
+function onTouchMove () {
+    swipeData.value = parseFloat(document.getElementById("basic-input-speed-range").value);
+
+    const currentX = event.touches[0].clientX;
+    const distance = currentX - swipeData.startX;
+
+    if (Math.abs(distance) >= swipeData.incrementStep) {
+        swipeData.value += swipeData.incrementValue * Math.sign(distance);
+        swipeData.startX = currentX; // reset startX to current position to track next increment
+        updateSpeedDisplay();
+    }
+}
+
+function onTouchUp () {
+    document.removeEventListener('touchmove', onTouchMove);
+    document.removeEventListener('touchup', onTouchUp)
+}
+
 
 function updateSpeedDisplay() {
     document.getElementById("basic-input-speed-range").value = swipeData.value.toFixed(1);
