@@ -10,7 +10,7 @@
 
 
 .results-section * {
-    font-size: 70px;
+    font-size: 40px;
     font-style: italic;
 }
 
@@ -58,14 +58,14 @@ input[type="range"]::-ms-thumb {
 }
 
 #basic-input-speed-range{
-    font-size: 70px; 
+    font-size: 40px; 
     background-color: transparent; 
     border-radius: 0px;
     text-align: center;
     /*border: none;*/
     box-sizing: content-box;
 
-    width: 100%;
+    width: 20%;
     /*
     border: 2px solid #ccc;
     color: #000; 
