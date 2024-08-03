@@ -1,38 +1,25 @@
-let swipeData = {
-    value: 0.0,
-    startX: 0,
-    incrementStep: 120, // distance in pixels to increment value
-    incrementValue: 0.1,
-    valueDisplay: document.getElementById('value'),
-    draggable: document.getElementById('draggable')
-}
+const touchArea = document.getElementById('touchArea');
 
-
-
-draggable.addEventListener('mousedown', (event) => {
-    swipeData.startX = event.clientX;
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
+touchArea.addEventListener('touchstart', (e) => {
+    touchArea.style.backgroundColor = 'lightgreen';
+    touchArea.innerText = 'Touch Start';
+    console.log('Touch Start', e);
 });
 
-function onMouseMove(event) {
-    const currentX = event.clientX;
-    const distance = currentX - swipeData.startX;
+touchArea.addEventListener('touchmove', (e) => {
+    touchArea.style.backgroundColor = 'yellow';
+    touchArea.innerText = 'Touch Move';
+    console.log('Touch Move', e);
+});
 
-    if (Math.abs(distance) >= swipeData.incrementStep) {
-        swipeData.value += swipeData.incrementValue * Math.sign(distance);
-        swipeData.startX = currentX; // reset startX to current position to track next increment
-        updateValueDisplay();
-    }
-}
+touchArea.addEventListener('touchend', (e) => {
+    touchArea.style.backgroundColor = 'lightblue';
+    touchArea.innerText = 'Touch End';
+    console.log('Touch End', e);
+});
 
-function onMouseUp() {
-    document.removeEventListener('mousemove', onMouseMove);
-    document.removeEventListener('mouseup', onMouseUp);
-}
-
-function updateValueDisplay() {
-    swipeData.valueDisplay.textContent = `Value: ${swipeData.value.toFixed(1)}`;
-}
-
-// hei opå deg
+touchArea.addEventListener('touchcancel', (e) => {
+    touchArea.style.backgroundColor = 'red';
+    touchArea.innerText = 'Touch Cancel';
+    console.log('Touch Cancel', e);
+});
