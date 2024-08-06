@@ -22,7 +22,7 @@ function updateInputFromRange(input) {
 
 
     // Showing the pace after the user clicks the button
-    showPaceAfterRangeChange(pace.hours, pace.minutes, pace.seconds);
+    showPaceAfterRangeChange(pace.hours, pace.minutes, pace.seconds, pace.milliseconds);
 
     // Updating the projected times section
     updateAvgProjectedTime(speed)
@@ -38,23 +38,31 @@ function updateAvgProjectedTime(selectedSpeed) {
 
         avgProjectedTime = calculateAvgProjectedTime(selectedSpeed, kmDistance);
 
-        showAvgProjectedTimeAfterRangeChange(hours=avgProjectedTime.hours, minutes=avgProjectedTime.minutes, seconds=avgProjectedTime.seconds, kmDistance=kmDistance);
+        showAvgProjectedTimeAfterRangeChange(hours=avgProjectedTime.hours, minutes=avgProjectedTime.minutes, seconds=avgProjectedTime.seconds, milliseconds=avgProjectedTime.milliseconds, kmDistance=kmDistance);
 
     }
 
 }
 
 
-function showAvgProjectedTimeAfterRangeChange(hours, minutes, seconds, kmDistance) {
+function showAvgProjectedTimeAfterRangeChange(hours, minutes, seconds, milliseconds, kmDistance) {
 
-    // Rewriting to double digits
+    // Rewriting to double digits/triple digits
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
+    if (milliseconds < 10) {
+        milliseconds = "00" + milliseconds;
+    }
+    else if (milliseconds >= 10 && milliseconds <= 100) {
+        milliseconds = "0" + milliseconds;
+    }
+    
 
     let HTMLElementHours = `avg-pace-${kmDistance}-projected-time-result-hours`;
     let HTMLElementMinutes = `avg-pace-${kmDistance}-projected-time-result-minutes`;
     let HTMLElementSeconds = `avg-pace-${kmDistance}-projected-time-result-seconds`;
+    let HTMLElementMilliseconds = `avg-pace-${kmDistance}-projected-time-result-milliseconds`;
 
     /*
     if (hours >= 1) {
@@ -72,19 +80,27 @@ function showAvgProjectedTimeAfterRangeChange(hours, minutes, seconds, kmDistanc
     document.getElementById(HTMLElementHours).textContent = hours;
     document.getElementById(HTMLElementMinutes).textContent = minutes;
     document.getElementById(HTMLElementSeconds).textContent = seconds;
+    document.getElementById(HTMLElementMilliseconds).textContent = milliseconds;
 
 }
 
-function showPaceAfterRangeChange(hours, minutes, seconds) {
+function showPaceAfterRangeChange(hours, minutes, seconds, milliseconds) {
 
     // Rewriting to double digits
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
+    if (milliseconds < 10) {
+        milliseconds = "00" + milliseconds;
+    }
+    else if (milliseconds >= 10 && milliseconds <= 100) {
+        milliseconds = "0" + milliseconds;
+    }
 
     document.getElementById("basic-range-result-hours").textContent = hours;
     document.getElementById("basic-range-result-minutes").textContent = minutes;
     document.getElementById("basic-range-result-seconds").textContent = seconds;
+    document.getElementById("basic-range-result-milliseconds").textContent = milliseconds;
 }
 
 
@@ -113,17 +129,19 @@ function calculateSpeed(inputValue) {
     if (hours <= 0) {
         minutes = Math.floor(rawConvertedMinutes);
     } else {
-        minutes = Math.floor(((rawConvertedMinutes / 60) % 1) * 60, 2)
+        minutes = Math.floor(((rawConvertedMinutes / 60) % 1) * 60, 2);
     };
-    let seconds = Math.round(((((rawConvertedMinutes / 60) % 1) * 60) % 1) * 60, 2);
+    let seconds = Math.floor(((((rawConvertedMinutes / 60) % 1) * 60) % 1) * 60);
+    let milliseconds = Math.round(((((rawConvertedMinutes / 60) % 1 * 60) % 1 * 60) % 1 ) * 1000);
 
+    
     // Handles situations where the rounding
-    // protocol gives f.ex. 00:60:00 instead of 01:00:00
-    if (minutes === 60) {
-        hours = hours + 1;
-        minutes = 0;
-        console.log("Possible bug");
+    // protocol gives f.ex 04:59:1000 instead of 05:00:000
+    if (milliseconds === 1000) {
+        seconds = seconds + 1;
+        milliseconds = 0;
     }
+
 
     // Handles situations where the rounding
     // protocol gives f.ex 04:60 instead of 05:00
@@ -132,8 +150,16 @@ function calculateSpeed(inputValue) {
         seconds = 0;
     }
     
-    
-    return {hours, minutes, seconds}
+    // Handles situations where the rounding
+    // protocol gives f.ex. 00:60:00 instead of 01:00:00
+    if (minutes === 60) {
+        hours = hours + 1;
+        minutes = 0;
+        console.log("Possible bug");
+    }
+
+
+    return {hours, minutes, seconds, milliseconds}
 };
 
 // Function to calculate average projected time for 
@@ -162,14 +188,15 @@ function calculateAvgProjectedTime(speed, kmDistance) {
     } else {
         minutes = Math.floor(((rawConvertedMinutesAvgProjected / 60) % 1) * 60, 2)
     };
-    let seconds = Math.round(((((rawConvertedMinutesAvgProjected / 60) % 1) * 60) % 1) * 60, 2);
+    let seconds = Math.floor(((((rawConvertedMinutesAvgProjected / 60) % 1) * 60) % 1) * 60);
+    let milliseconds = Math.round(((((rawConvertedMinutesAvgProjected / 60) % 1 * 60) % 1 * 60) % 1 ) * 1000)
 
 
     // Handles situations where the rounding
-    // protocol gives f.ex. 00:60:00 instead of 01:00:00
-    if (minutes === 60) {
-        hours = hours + 1;
-        minutes = 0;
+    // protocol gives f.ex 04:59:1000 instead of 05:00:000
+    if (milliseconds === 1000) {
+        seconds = seconds + 1;
+        milliseconds = 0;
     }
 
 
@@ -179,9 +206,17 @@ function calculateAvgProjectedTime(speed, kmDistance) {
         minutes = minutes + 1;
         seconds = 0;
     }
+
+    // Handles situations where the rounding
+    // protocol gives f.ex. 00:60:00 instead of 01:00:00
+    if (minutes === 60) {
+        hours = hours + 1;
+        minutes = 0;
+    }
+
     
 
-    return {hours, minutes, seconds}
+    return {hours, minutes, seconds, milliseconds}
 }
 
 // Adds event listener to the range input box.
