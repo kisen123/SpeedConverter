@@ -22,7 +22,6 @@
             
         
             <section id="speed-converter-titles">
-                <br>
                 <h1 id="speed-converter-title">Speed converter</h1>
             </section>
         </div>
@@ -44,16 +43,11 @@
 
     <main>
 
-        <section id="slider-section">
-            <h2><em>Choose a speed</em></h2>
-
-            <div id="basic-range">
-                <label for="basic-range-speed">&pm;0.1 km/t</label>
-                <input type="range" id="basic-range-speed" min="0.1" max="30" step="0.1" width="300px" oninput="updateInputFromRange(this.value)">
+            <div id="kmt-box">
+                <input type="text" id="basic-input-speed-range" value="12.5">
+                <p style="margin-left: 30px; font-size: 40px;">km/t</p>
             </div>
-            <input type="text" id="basic-input-speed-range" value="12.5">
-
-
+            
 
             <span class="results-section">
                 
@@ -67,12 +61,20 @@
                     
 
             </span>
-        </section>
+        
 
 
         <div id="swiper-div">
             <div id="swiper" class="swiper-flexitem">&leftarrow; &leftarrow; &leftarrow; &leftarrow; &leftarrow;Fine-tune &pm;0.1 &rightarrow; &rightarrow; &rightarrow; &rightarrow; &rightarrow;</div>
         </div>
+
+        <section id="slider-section">
+
+            <div id="basic-range">
+                <!--<label for="basic-range-speed">&pm;0.1 km/t</label>-->
+                <input type="range" id="basic-range-speed" min="0.1" max="30" step="0.1" width="300px" oninput="updateInputFromRange(this.value)">
+            </div>
+        </section>
 
         <section id="avg-pace-projected-time-results-section">
 
